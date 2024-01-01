@@ -43,3 +43,29 @@ app.get('/slots', (req, res) => {
   const availableSlots = timeSlots.filter(slot => !slot.isBooked);
   res.json(availableSlots);
 });
+
+app.post('/appointments', (req, res) => {
+    const { slotId, userDetails } = req.body;
+  
+    
+    const selectedSlot = timeSlots.find(slot => slot.timeSlotId === slotId);
+  
+    if (selectedSlot && !selectedSlot.isBooked) {
+      const appointmentId = generateUniqueId(); 
+  
+      const newAppointment = {
+        appointmentId,
+        slotId,
+        userDetails,
+      };
+  
+      appointments.push(newAppointment);
+  
+      selectedSlot.isBooked = true;
+  
+      res.json(newAppointment);
+    } else {
+      res.status(400).json({ error: 'Invalid time slot or already booked.' });
+    }
+  });
+ 

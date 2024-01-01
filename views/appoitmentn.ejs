@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+</head>
+<body>
+    <h1>Appointments</h1>
+
+    <h2>Booked Appointments</h2>
+    <ul>
+        <% appointments.forEach(appointment => { %>
+            <li>
+               Appointment ID: <%= appointment.appointmentId %>,
+                Time Slot ID: <%= appointment.slotId %>,
+               User Name: <%= appointment.userDetails.name %>,
+                User Email: <%= appointment.userDetails.email %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
