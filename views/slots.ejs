@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Slots</title>
+</head>
+<body>
+    <h1>Time Slots</h1>
+
+    <form action="/slots" method="POST">
+        <label for="startTime">Start Time:</label>
+        <input type="text" name="startTime" required>
+
+        <label for="endTime">End Time:</label>
+        <input type="text" name="endTime" required>
+
+        <button type="submit">Create Time Slot</button>
+    </form>
+
+    <h2>Available Slots</h2>
+    <ul>
+        <% slots.forEach(slot => { %>
+            <li>
+                Time Slot ID:<%= slot.timeSlotId %>,
+                Start Time: <%= slot.startTime %>,
+               End Time:<%= slot.endTime %>,
+               Booked: <%= slot.isBooked ? 'Yes' : 'No' %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
