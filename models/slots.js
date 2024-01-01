@@ -1,20 +1,13 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const slot_schema = new Schema({
-    
-    "TimeSlot": {
-        
-          timeSlotId: string,
-          startTime: datetime,
-          endTime: datetime,
-          isBooked: boolean
-        },
-        "required": ["timeSlotId", "startTime", "endTime", "isBooked"]
-      });
-    
-  
-const slot = mongoose.model( 'time_slot ',slot_schema );
-module.exports = slot;;
+const slotSchema = new mongoose.Schema({
+    timeSlotId: String,
+    startTime: String,
+    endTime: String,
+    isBooked: Boolean,
+});
+
+const Slot = mongoose.model('Slot', slotSchema);
+module.exports = Slot;
 
 

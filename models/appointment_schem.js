@@ -8,24 +8,11 @@ const appointmentSchema = new mongoose.Schema({
       name: String,
       email: String
     },
-    "required": [" appointmentId", "slotId", "userDetails"]
-  });
-  
-  
-const appointment = mongoose.model('appointment', appointmentSchema);
-module.exports = appointment;
+});
 
 
-
-
-
-
-
-
-
-
-
-   
+const Appointment = mongoose.model('Appointment', appointmentSchema);
+module.exports = Appointment;
 
 
 

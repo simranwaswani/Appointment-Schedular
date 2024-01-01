@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose');
-const appointment = mongoose.model('appointment');
-const slot = mongoose.model('slot');
+const Appointment = require('./models/appointment_schem');
+const Slot = require('./models/slots');
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -17,11 +17,6 @@ mongoose.connect(con)
 .catch((err)=>{console.log(err)});
 
 app.set('view engine','ejs')
-
-
-let timeSlots = [];
-let appointments = [];
-
 
 app.post('/slots', (req, res) => {
   const { startTime, endTime } = req.body;
@@ -44,7 +39,7 @@ app.get('/slots', (req, res) => {
   res.json(availableSlots);
 });
 
-app.post('/appointments', (req, res) => {
+app.post('/appointment', (req, res) => {
     const { slotId, userDetails } = req.body;
   
     
@@ -68,7 +63,7 @@ app.post('/appointments', (req, res) => {
       res.status(400).json({ error: 'Invalid time slot or already booked.' });
     }
   });
-  app.get('/appointments', (req, res) => {
+  app.get('/appointment', (req, res) => {
     res.json(appointments);
   });
   
