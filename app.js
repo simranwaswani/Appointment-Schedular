@@ -68,4 +68,8 @@ app.post('/appointments', (req, res) => {
       res.status(400).json({ error: 'Invalid time slot or already booked.' });
     }
   });
- 
+  app.get('/appointments', (req, res) => {
+    res.json(appointments);
+  });
+  
+  
