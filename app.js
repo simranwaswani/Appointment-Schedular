@@ -9,6 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const con = 'mongodb+srv://admin:admin@cluster0.qn8ilfa.mongodb.net/?retryWrites=true&w=majority'
 
+let timeSlots = [];
+let appointments = [];
 mongoose.connect(con)
 .then(()=>{
     app.listen(3000)
